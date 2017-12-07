@@ -1,3 +1,5 @@
+// Package slack_msg provides a very basic and simple mean to send messages
+// to a Slack webhook.
 package slack_msg
 
 import (
@@ -14,6 +16,7 @@ type Slack struct {
 	webhookURL string
 }
 
+// Create initiates the Slack messenger using all the vital information provided.
 func (s *Slack) Create(webhookURL string) {
 	s.webhookURL = webhookURL
 	s.client = &http.Client{
@@ -21,6 +24,7 @@ func (s *Slack) Create(webhookURL string) {
 	}
 }
 
+// Send uses the Stringer interface to compose the messages sent over to Slack.
 func (s *Slack) Send(text string, params ...interface{}) {
 	t := map[string]string{"text": fmt.Sprintf(text, params...)}
 	payload, err := json.Marshal(t)
