@@ -13,5 +13,4 @@ func main() {
     s.Send("I can send plain fmt.Println.")
     s.Send("I can act like %s too.", "fmt.Sprintf")
 }
-
 ```
